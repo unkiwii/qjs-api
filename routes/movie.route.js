@@ -35,14 +35,14 @@ module.exports = (server, controller) => {
   });
 
   server.put('/movies/:id', (req, res, next) => {
-    console.log('PUT /movie/:id');
+    console.log(`PUT /movie/${req.params.id}`);
     controller.update(req.params.id, JSON.parse(req.body))
       .then(good.bind(this, res, next))
       .catch(invalid.bind(this, res, next));
   });
 
   server.del('/movies/:id', (req, res, next) => {
-    console.log('DEL /movie/:id');
+    console.log(`DEL /movie/${req.params.id}`);
     controller.remove(req.params.id)
       .then(good.bind(this, res, next))
       .catch(invalid.bind(this, res, next));

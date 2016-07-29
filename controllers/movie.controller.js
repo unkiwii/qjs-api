@@ -34,7 +34,13 @@ module.exports = (MovieModel) => {
 
     remove(id) {
       return new Promise((resolve, reject) => {
-        resolve('TODO');
+        MovieModel.findByIdAndRemove(id, (err) => {
+          if (err === null) {
+            resolve(null);
+          } else {
+            reject(err);
+          }
+        })
       });
     }
 
