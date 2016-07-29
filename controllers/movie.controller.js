@@ -28,17 +28,23 @@ module.exports = (MovieModel) => {
 
     update(id, props) {
       return new Promise((resolve, reject) => {
-        resolve('TODO');
+        MovieModel.findByIdAndUpdate(id, props, (err) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(null);
+          }
+        });
       });
     },
 
     remove(id) {
       return new Promise((resolve, reject) => {
         MovieModel.findByIdAndRemove(id, (err) => {
-          if (err === null) {
-            resolve(null);
-          } else {
+          if (err) {
             reject(err);
+          } else {
+            resolve(null);
           }
         })
       });

@@ -18,7 +18,7 @@ module.exports = {
       if (req.method.toUpperCase() === 'OPTIONS') {
         res.header('Access-Control-Allow-Credentials', true);
         res.header('Access-Control-Allow-Headers', restify.CORS.ALLOW_HEADERS.join(', '));
-        res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+        res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
         res.header('Access-Control-Allow-Origin', req.headers.origin);
         res.header('Access-Control-Max-Age', 0);
         res.header('Content-Type', 'text/plain charset=UTF-8');

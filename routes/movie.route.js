@@ -34,8 +34,8 @@ module.exports = (server, controller) => {
       .catch(invalid.bind(this, res, next));
   });
 
-  server.put('/movies/:id', (req, res, next) => {
-    console.log(`PUT /movie/${req.params.id}`);
+  server.patch('/movies/:id', (req, res, next) => {
+    console.log(`PATCH /movie/${req.params.id}`);
     controller.update(req.params.id, JSON.parse(req.body))
       .then(good.bind(this, res, next))
       .catch(invalid.bind(this, res, next));
