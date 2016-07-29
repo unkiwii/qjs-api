@@ -5,24 +5,24 @@ module.exports = (MovieModel) => {
     all() {
       return new Promise((resolve, reject) => {
         MovieModel.find()
-          .catch(msg => reject(msg))
-          .then(response => resolve(response));
+          .then(response => resolve(response || []))
+          .catch(msg => reject(msg));
       });
     },
 
     get(id) {
       return new Promise((resolve, reject) => {
         MovieModel.findById(id)
-          .catch(msg => reject(msg))
-          .then(response => resolve(response));
+          .then(response => resolve(response))
+          .catch(msg => reject(msg));
       });
     },
 
     add(props) {
       return new Promise((resolve, reject) => {
         new MovieModel(props).save()
-          .catch(msg => reject(msg))
-          .then(response => resolve(response));
+          .then(response => resolve(response))
+          .catch(msg => reject(msg));
       });
     },
 

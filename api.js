@@ -1,14 +1,18 @@
 const restify = require('restify');
 const mongoose = require('mongoose');
 const config = require('./config');
+const Promise = require('promise');
 
 console.log(`connecting to ${config.db}`);
 mongoose.connect(config.db);
+mongoose.Promise = Promise;
 
 const server = restify.createServer({
   name: 'qjs-api',
   version:'0.0.1'
 });
+
+server.use(restify.bodyParser());
 
 // movies
 const MovieModel = require('./models/movie.model.js');
