@@ -1,26 +1,28 @@
 const Promise = require('promise');
 
-module.exports = (model) => {
+module.exports = (MovieModel) => {
   return Object.create({
     all() {
       return new Promise((resolve, reject) => {
-        model.find()
+        MovieModel.find()
           .catch(msg => reject(msg))
-          .then((response) => resolve(response));
+          .then(response => resolve(response));
       });
     },
 
     get(id) {
       return new Promise((resolve, reject) => {
-        model.find({'id': id})
+        MovieModel.findById(id)
           .catch(msg => reject(msg))
-          .then((response) => resolve(response));
+          .then(response => resolve(response));
       });
     },
 
     add(props) {
       return new Promise((resolve, reject) => {
-        resolve('TODO');
+        new MovieModel(props).save()
+          .catch(msg => reject(msg))
+          .then(response => resolve(response));
       });
     },
 

@@ -10,6 +10,7 @@
     "restify": "^4.1.1"
   },
   "devDependencies": {
+    "blue-tape": "^0.2.0",
     "tape": "^4.6.0"
   },
   "scripts": {
