@@ -2,6 +2,7 @@ const restify = require('restify');
 const mongoose = require('mongoose');
 const config = require('./config');
 const Promise = require('promise');
+const cors = require('./cors');
 
 console.log(`connecting to ${config.db}`);
 mongoose.connect(config.db);
@@ -12,6 +13,7 @@ const server = restify.createServer({
   version:'0.0.1'
 });
 
+cors.setup(restify, server);
 server.use(restify.bodyParser());
 
 // movies

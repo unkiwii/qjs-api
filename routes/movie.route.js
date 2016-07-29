@@ -13,35 +13,35 @@ module.exports = (server, controller) => {
     next();
   }
 
-  server.get('/movie/all', (req, res, next) => {
-    console.log('GET /movie/all');
+  server.get('/movies', (req, res, next) => {
+    console.log('GET /movies');
     controller.all()
       .then(good.bind(this, res, next))
       .catch(invalid.bind(this, res, next));
   });
 
-  server.get('/movie/:id', (req, res, next) => {
+  server.get('/movies/:id', (req, res, next) => {
     console.log(`GET /movie/${req.params.id}`);
     controller.get(req.params.id)
       .then(good.bind(this, res, next))
       .catch(invalid.bind(this, res, next));
   });
 
-  server.post('/movie', (req, res, next) => {
+  server.post('/movies', (req, res, next) => {
     console.log('POST /movie');
     controller.add(JSON.parse(req.body))
       .then(good.bind(this, res, next))
       .catch(invalid.bind(this, res, next));
   });
 
-  server.put('/movie/:id', (req, res, next) => {
+  server.put('/movies/:id', (req, res, next) => {
     console.log('PUT /movie/:id');
-    controller.update(req.params.id, req.body)
+    controller.update(req.params.id, JSON.parse(req.body))
       .then(good.bind(this, res, next))
       .catch(invalid.bind(this, res, next));
   });
 
-  server.del('/movie/:id', (req, res, next) => {
+  server.del('/movies/:id', (req, res, next) => {
     console.log('DEL /movie/:id');
     controller.remove(req.params.id)
       .then(good.bind(this, res, next))
